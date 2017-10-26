@@ -1,4 +1,9 @@
 class CommentsController < ApplicationController
+  def index
+    @most_active_users = Comment.count_users_comments
+    @users = User.all
+  end
+  
   def create
     movie = Movie.find(params[:movie_id])
     @comment = movie.comments.new(comment_params)
